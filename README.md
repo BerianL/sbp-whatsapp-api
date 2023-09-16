@@ -12,8 +12,6 @@ The SBP WhatsApp API Server is an Express.js application that provides RESTful A
 - [Routes](#routes)
 - [Error Handling](#error-handling)
 - [Contributing](#contributing)
-- [License](#license)
-
 ## Getting Started
 
 ### Prerequisites
@@ -62,8 +60,6 @@ Example API endpoints:
 
 See the [Routes](#routes) section for more details on available endpoints.
 
-Please refer to the [Routes](#routes) section for more details on available routes.
-
 ## Configuration
 
 The application uses a configuration file (`config.js`) to store API specific variables such as `BASE_URL`.
@@ -90,7 +86,3 @@ The application includes error handling middleware (`errorHandler.js`) to handle
 ## Contributing
 
 Contributions are welcome! Feel free to open issues or submit pull requests to help improve this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
