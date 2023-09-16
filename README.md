@@ -60,16 +60,16 @@ To use the WhatsApp API Server, you can make HTTP requests to the provided endpo
 
 - **GET `/sessions`**: Get a list of all sessions.
 
-- **POST `/sessions/start/:name`**: Start a new session with the specified name.
+- **POST `/sessions/:name/start`**: Start a new session with the specified name.
     - Expected Data: No additional data required.
 
-- **POST `/sessions/stop/:name`**: Stop a session by name.
+- **POST `/sessions/:name/stop`**: Stop a session by name.
     - Expected Data: No additional data required.
 
-- **POST `/sessions/remove/:name`**: Remove a session by name.
+- **POST `/sessions/:name/remove`**: Remove a session by name.
     - Expected Data: No additional data required.
 
-- **GET `/sessions/qrCode/:name`**: Retrieves an image of a QR code for session authentication.
+- **GET `/sessions/:name/qrCode`**: Retrieves an image of a QR code for session authentication.
     - Expected Data: No additional data required.
 
 ### Message Endpoints:
@@ -114,8 +114,6 @@ To use the WhatsApp API Server, you can make HTTP requests to the provided endpo
         - `data`: The base64-encoded file data.
         - `filename`: The filename of the file.
 
-See the [Routes](#routes) section for a concise summary of the available endpoints.
-
 ## Configuration
 
 The application uses a configuration file (`config.js`) to store API specific variables such as `BASE_URL`.
@@ -128,10 +126,10 @@ Ensure you configure these files with the appropriate values within the root dir
 
 - `/sessions`
     - `GET /`: Get a list of all sessions.
-    - `POST /start/:name`: Start a new session with the specified name.
-    - `POST /stop/:name`: Stop a session by name.
-    - `POST /remove/:name`: Remove a session by name.
-    - `GET /qrCode/:name`: Retrieves an image of a QR code for session authentication.
+    - `POST /:name/start`: Start a new session with the specified name.
+    - `POST /:name/stop`: Stop a session by name.
+    - `POST /:name/remove`: Remove a session by name.
+    - `GET /:name/qrCode`: Retrieves an image of a QR code for session authentication.
 
 - `/messages`
     - `POST /text`: Send a text message.
@@ -140,14 +138,4 @@ Ensure you configure these files with the appropriate values within the root dir
     - `POST /file/url`: Send a file message with a URL.
     - `POST /file/base64`: Send a file message with base64 data.
 
-See the [Usage](#usage) section for more details on the expected data for each endpoint.
-
-Please refer to the code and documentation for the `sessionController.js` and `messageController.js` for more details on route handling.
-
-## Error Handling
-
-The application includes error handling middleware (`errorHandler.js`) to handle various error scenarios and provide informative error responses. Error messages are categorized and returned as JSON responses.
-
-## Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests to help improve this project.
+See the [Usage](#usage) section for more details on the expected data for
