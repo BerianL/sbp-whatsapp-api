@@ -1,18 +1,21 @@
 import express from "express";
-import bodyParser from "body-parser";
 import cors from "cors";
+import bodyParser from "body-parser";
 import 'express-async-errors';
+
 import routes from "./router";
 import { errorHandler } from "./middleware/errorHandler";
+import { PORT } from "./config";
 
 const app = express();
-const PORT = process.env.API_PORT || 8080;
 
-app.use(bodyParser.json());
+// Use the PORT from config.js, or a default value (e.g., 8080) as a fallback
+const port = PORT || 8080;
+
+// Middleware
+app.use(bodyParser.json({ limit: '10mb' })); // Body parser with limit
+app.use(express.urlencoded({ extended: true, limit: '10mb' })); // URL-encoded parser with limit
 app.use(cors());
-
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Default route that returns a welcome message
 app.get("/", (req, res) => {
@@ -25,6 +28,6 @@ app.use(routes);
 // Error handling middleware
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}...`);
+app.listen(port, () => {
+    console.log(`Listening on port ${port}...`);
 });
