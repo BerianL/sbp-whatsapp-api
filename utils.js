@@ -48,3 +48,17 @@ export const handleImageRequest = async (req, res, imageUrl) => {
         res.status(500).json({ error: "Internal server error", details: error.message });
     }
 };
+//Function to handle Session requests
+export const handleSessionRequest = async (req, res, endpoint, method = 'get', data = {}) => {
+    await handleRequest(req, res, endpoint, method, data);
+};
+
+//Function to send WhatsApp messages
+export const sendMessage = async (req, res, endpoint) => {
+    const { from, phoneNumber, ...messageData } = req.body;
+    await handleRequest(req, res, endpoint, 'post', {
+        session: from,
+        chatId: `${phoneNumber}@c.us`,
+        ...messageData
+    });
+};
