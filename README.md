@@ -28,27 +28,27 @@ Before you begin, ensure you have met the following requirements:
 
 1. Clone this repository:
 
-   \```
+   ```
    git clone https://github.com/BerianL/sbp-whatsapp-api.git
-   \```
+   ```
 
 2. Navigate to the project directory:
 
-   \```
+   ```
    cd sbp-whatsapp-api
-   \```
+   ```
 
 3. Install dependencies:
 
-   \```
+   ```
    npm install
-   \```
+   ```
 
 4. Start the server:
 
-   \```
+   ```
    npm start
-   \```
+   ```
 
 The server should now be running at `http://localhost:8080`.
 
