@@ -131,7 +131,7 @@ Ensure you configure these files with the appropriate values within the root dir
     - `POST /:name/remove`: Remove a session by name.
     - `GET /:name/qrCode`: Retrieves an image of a QR code for session authentication.
 
-- `/messages`
+- `/message`
     - `POST /text`: Send a text message.
     - `POST /image/url`: Send an image message with a URL.
     - `POST /image/base64`: Send an image message with base64 data.

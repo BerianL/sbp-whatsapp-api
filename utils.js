@@ -17,9 +17,17 @@ export const handleRequest = async (req, res, endpoint, method = 'get', data = {
             data
         });
 
-        if (response.status === 200) {
-            res.json(response.data);
+        if (response.status === 200 || response.status === 201) {
+            // Handle success (200 or 201) differently from errors
+            if (response.status === 201) {
+                // Handle the 201 (Created) status here if needed
+                // You can customize this based on your application's requirements
+                res.status(response.status).json({ data: response.data });
+            } else {
+                res.json(response.data);
+            }
         } else {
+            // Handle other status codes as errors
             res.status(response.status).json({ error: `API Error: ${response.statusText}`, data: response.data });
         }
     } catch (error) {
@@ -27,6 +35,7 @@ export const handleRequest = async (req, res, endpoint, method = 'get', data = {
         res.status(500).json({ error: "Internal server error", details: error.message });
     }
 };
+
 
 //Function to handle requests to the API that return images
 export const handleImageRequest = async (req, res, imageUrl) => {
